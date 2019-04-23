@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <script
+        src="https://code.jquery.com/jquery-1.12.1.js"
+        integrity="sha256-VuhDpmsr9xiKwvTIHfYWCIQ84US9WqZsLfR4P7qF6O8="
+        crossorigin="anonymous"></script>
+        <script src="./content-placeholder-loader.js"></script>
+        <link rel="stylesheet" type="text/css" href="./content-placeholder-loader.css"></link>
+        <style>
+            .test-container.static{
+                width: 400px;
+                height: 630px;
+                border: 1px dotted black;
+            }
+
+            #real-container{
+                width: 400px;
+                height: 630px;
+                border: 1px dotted black;
+            }
+
+            .hide{
+                display: none;
+            }
+
+            .show{
+                display: block;
+            }
+        </style>
+
+        <script>
+                $(document).ready(function () {
+                    $('#btn1').click(function () {
+                        $('#test').addClass('static').removeClass('hide');
+                        $('#test').loadWithPlaceHolderContent();
+
+                        setTimeout(function(){
+                        $('#test').addClass('hide').removeClass('show static').children().remove();
+                        $('#real-container').removeClass('hide');
+                    },350);
+                    });
+                });
+        </script>
+    </head>
+    <body>
+        <button id='btn1'>Load Content into Div</button>
+        <div id="test" class="test-container"></div>
+        <div id='real-container' class='hide'>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+    </body>
+</html>
